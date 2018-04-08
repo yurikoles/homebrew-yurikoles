@@ -4,7 +4,7 @@ class ThriftSwift3 < Formula
   sha256 "c4ad38b6cb4a3498310d405a91fef37b9a8e79a50cd0968148ee2524d2fa60c2"
 
   head do
-    url "https://github.com/yurikoles/thrift.git"
+    url "https://github.com/apocolipse/thrift.git"
 
     depends_on "autoconf" => :build
     depends_on "automake" => :build
