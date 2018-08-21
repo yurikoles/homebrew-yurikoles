@@ -4,8 +4,10 @@ class MypaintBrushes < Formula
   url "https://github.com/Jehan/mypaint-brushes/archive/v1.3.0.tar.gz"
   sha256 "704bb6420e65085acfd7a61d6050e96b0395c5eab078433f11406c355f16b214"
 
-  depends_on "autoconf"
-  depends_on "automake"
+  head "https://github.com/Jehan/mypaint-brushes.git"
+
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
 
   patch :DATA
 
