@@ -13,9 +13,10 @@ class Gimp < Formula
   end
 
   head do
-    depends_on "libtool" => :build
     depends_on "autoconf" => :build
-    
+    depends_on "automake" => :build
+    depends_on "libtool" => :build
+
     url "https://gitlab.gnome.org/GNOME/gimp.git"
 
     resource "gegl" do
@@ -45,7 +46,7 @@ class Gimp < Formula
   depends_on "gexiv2"
   depends_on "libmypaint"
   depends_on "poppler"
-  depends_on "mypaint-brushes"
+  depends_on "yurikoles/yurikoles/mypaint-brushes"
   depends_on "little-cms2"
   depends_on "libpng" => :recommended
   depends_on "libwmf" => :recommended
@@ -53,6 +54,7 @@ class Gimp < Formula
   depends_on "ghostscript" => :optional
   depends_on "poppler" => :optional
   depends_on "libexif" => :optional
+  depends_on "gtk-doc"
 
   def install
     resource("gegl").stage do
@@ -81,6 +83,7 @@ class Gimp < Formula
     args << "--without-wmf" if build.without? "libwmf"
     args << "--without-poppler" if build.without? "poppler"
     args << "--without-libexif" if build.without? "libexif"
+    args << "--disable-gtk-doc" if build.without? "gtk-doc"
 
     system "./autogen.sh" if build.head?
     system "./configure", *args
