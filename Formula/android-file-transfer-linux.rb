@@ -10,7 +10,7 @@ class AndroidFileTransferLinux < Formula
   depends_on "qt"
 
   def install
-    system "cmake", ".", *std_cmake_args
+    system "cmake", ".", *std_cmake_args, "-DBUILD_FUSE=TRUE"
     system "make", "install"
   end
 
