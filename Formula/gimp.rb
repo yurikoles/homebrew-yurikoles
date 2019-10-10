@@ -25,37 +25,37 @@ class Gimp < Formula
     end
   end
 
-  depends_on "pkg-config" => :build
-  depends_on "glib-networking"
   depends_on "gettext" => :build
   depends_on "intltool" => :build
-  depends_on "babl"
-  depends_on "fontconfig"
-  depends_on "pango"
-  depends_on "gtk+"
-  depends_on "gtk-mac-integration"
-  depends_on "cairo"
-  depends_on "pygtk"
-  depends_on "glib"
-  depends_on "gdk-pixbuf"
-  depends_on "freetype"
-  depends_on "xz"
-  depends_on "dbus"
+  depends_on "pkg-config" => :build
   depends_on "aalib"
-  depends_on "librsvg"
-  depends_on "json-glib"
+  depends_on "babl"
+  depends_on "cairo"
+  depends_on "dbus"
+  depends_on "fontconfig"
+  depends_on "freetype"
+  depends_on "gdk-pixbuf"
   depends_on "gexiv2"
-  depends_on "libmypaint"
-  depends_on "poppler"
-  depends_on "yurikoles/yurikoles/mypaint-brushes"
-  depends_on "little-cms2"
-  depends_on "libpng" => :recommended
-  depends_on "libwmf" => :recommended
-  depends_on "libtiff" => :recommended
-  depends_on "ghostscript" => :optional
-  depends_on "poppler" => :optional
-  depends_on "libexif" => :optional
+  depends_on "glib"
+  depends_on "glib-networking"
+  depends_on "gtk+"
   depends_on "gtk-doc"
+  depends_on "gtk-mac-integration"
+  depends_on "json-glib"
+  depends_on "libmypaint"
+  depends_on "librsvg"
+  depends_on "little-cms2"
+  depends_on "pango"
+  depends_on "poppler"
+  depends_on "pygtk"
+  depends_on "xz"
+  depends_on "yurikoles/yurikoles/mypaint-brushes"
+  depends_on "libpng" => :recommended
+  depends_on "libtiff" => :recommended
+  depends_on "libwmf" => :recommended
+  depends_on "ghostscript" => :optional
+  depends_on "libexif" => :optional
+  depends_on "poppler" => :optional
 
   def install
     resource("gegl").stage do
