@@ -8,7 +8,7 @@ cask 'virtualbox-extension-pack-snapshot' do
     versions = URI(downloads_url.to_s)
                .open
                .read
-               .scan(%r{href=".*(Oracle_VM_VirtualBox_Extension_Pack-(?:\d+\.?)+\-\d+\.vbox\-extpack)"})
+               .scan(%r{href=".*(Oracle_VM_VirtualBox_Extension_Pack-6.1.1+\-\d+\.vbox\-extpack)"})
                .flatten
     "https://www.virtualbox.org/download/testcase/#{versions.last}"
   end
