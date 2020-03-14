@@ -1,9 +1,8 @@
 class SvtAv1 < Formula
   desc "Scalable Video Technology for AV1 Encoder"
   homepage "https://01.org/svt"
-  url "https://github.com/OpenVisualCloud/SVT-AV1/archive/v0.7.0.tar.gz"
-  sha256 "69893ec8b8515dd3bcde78ff955a908537acd52f22310f0f188f4e98b239000a"
-  revision 1
+  url "https://github.com/OpenVisualCloud/SVT-AV1/archive/v0.8.1.tar.gz"
+  sha256 "b3508ff8b36465193e120458be960192088ac2b0cf859beda88d004c977d124f"
   head "https://github.com/OpenVisualCloud/SVT-AV1.git"
 
   depends_on "cmake" => :build
