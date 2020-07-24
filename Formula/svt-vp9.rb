@@ -1,8 +1,8 @@
 class SvtVp9 < Formula
   desc "Scalable Video Technology for VP9 Encoder"
   homepage "https://01.org/svt"
-  url "https://github.com/OpenVisualCloud/SVT-VP9/archive/v0.1.0.tar.gz"
-  sha256 "a38ea33d86b7e56219a8d2d10ba8acaf545a84e72545f72a0d53de346dff2b0f"
+  url "https://github.com/OpenVisualCloud/SVT-VP9/archive/v0.2.2.tar.gz"
+  sha256 "988adae5ed5744769f1c990f7b085e1e0fa31d41ea415a75b9cf14c0a5b17947"
   head "https://github.com/OpenVisualCloud/SVT-VP9.git"
 
   depends_on "cmake" => :build
