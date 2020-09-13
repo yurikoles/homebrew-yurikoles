@@ -1,6 +1,6 @@
 cask "ocbuilder" do
-  version "7.4.4"
-  sha256 "fb8efed1ad44ec9c0e7020e4b4dc29725b5808baf3848f5eb78b683b36ab69bd"
+  version "7.5.0"
+  sha256 "ac1e6be728e5cb0cd00a7ea8a153f09d00406c1824c23de9d6e3e6eebedede3c"
 
   url "https://github.com/Pavo-IM/ocbuilder/releases/download/#{version}/OCBuilder.app.zip"
   appcast "https://github.com/Pavo-IM/ocbuilder/releases.atom"
