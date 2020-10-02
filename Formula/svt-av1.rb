@@ -11,9 +11,12 @@ class SvtAv1 < Formula
 
   def install
     mkdir "build" do
-      system "cmake", "..", "-G", "Ninja", *std_cmake_args
-      system "ninja"
-      system "ninja", "install"
+      args = std_cmake_args
+      args << "-G" << "Ninja"
+
+      system "cmake", "..", *args
+      system "cmake", "--build", "."
+      system "cmake", "--install", "."
     end
   end
 
