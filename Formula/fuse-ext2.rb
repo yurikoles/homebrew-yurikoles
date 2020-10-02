@@ -1,8 +1,6 @@
 class FuseExt2 < Formula
-  desc "FUSE module to mount ext2/3/4 file systems with read write support"
+  desc "FUSE module to mount ext{2,3,4} file systems with read/write support"
   homepage "https://github.com/alperakcan/fuse-ext2"
-  url "https://github.com/alperakcan/fuse-ext2/archive/v0.0.10.tar.gz"
-  sha256 "ad2260df4ccfb8ba9f761c66ea7c3b24bf690eab46e6d562d2d2e5a5f2f76dff"
   head "https://github.com/alperakcan/fuse-ext2.git"
 
   depends_on "autoconf" => :build
@@ -38,7 +36,7 @@ class FuseExt2 < Formula
   end
 
   def caveats
-    s = <<~EOS
+    <<~EOS
       For #{name} to be able to work properly, the filesystem extension and
       preference pane must be installed by the root user:
 
@@ -54,14 +52,11 @@ class FuseExt2 < Formula
         sudo rm -rf /Library/Filesystems/fuse-ext2.fs
         sudo rm -rf /Library/PreferencePanes/fuse-ext2.prefPane
     EOS
-
-    s
   end
 
   test do
     # Can't test more here as an ext2 image mounting test
     # would require fuse-ext2.fs to be installed (see caveats)
-    s = pipe_output bin/"fuse-ext2"
-    assert_match /Copyright \(C\) 2008\-2015 Alper Akcan/, s
+    assert_match "FUSE EXT2FS Driver", `#{bin}/fuse-ext2`
   end
 end
