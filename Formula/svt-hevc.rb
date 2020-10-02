@@ -3,8 +3,8 @@ class SvtHevc < Formula
   homepage "https://01.org/svt"
   url "https://github.com/OpenVisualCloud/SVT-HEVC/archive/v1.5.0.tar.gz"
   sha256 "5331213ce3fe73d5fe2887cf3aabcd8ffde2fafd0e5f09928d412dc8306f3992"
+  revision 2
   head "https://github.com/OpenVisualCloud/SVT-HEVC.git"
-  revision 1
 
   depends_on "cmake" => :build
   depends_on "yasm" => :build
@@ -17,7 +17,8 @@ class SvtHevc < Formula
   def install
     mkdir "build" do
       system "cmake", "..", *std_cmake_args
-      system "make", "install"
+      system "cmake", "--build", "."
+      system "cmake", "--install", "."
     end
   end
 
