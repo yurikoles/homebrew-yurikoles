@@ -1,8 +1,9 @@
 class Uget < Formula
   desc "#1 Open Source Download Manager"
   homepage "https://ugetdm.com/"
-  url "https://sourceforge.net/projects/urlget/files/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz"
+  url "https://downloads.sourceforge.net/project/urlget/uget%20%28stable%29/2.2.3/uget-2.2.3-1.tar.gz"
   sha256 "11356e4242151b9014fa6209c1f0360b699b72ef8ab47dbeb81cc23be7db9049"
+  revision 1
 
   head do
     url "https://git.code.sf.net/p/urlget/uget2.git"
@@ -31,6 +32,6 @@ class Uget < Formula
   end
 
   test do
-    assert `"#{bin}/uget-gtk" --help | grep -- --help` =~ /--help/
+    assert_match "help", `#{bin}/uget-gtk --help`
   end
 end
