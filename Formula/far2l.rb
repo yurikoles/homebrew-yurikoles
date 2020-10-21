@@ -14,6 +14,10 @@ class Far2l < Formula
   depends_on "pkg-config"
   depends_on "wget"
   depends_on "wxmac"
+  depends_on "minizip"
+  depends_on "spdlog"
+  depends_on "xerces-c"
+  depends_on "uchardet"
 
   def install
     mkdir "build" do
