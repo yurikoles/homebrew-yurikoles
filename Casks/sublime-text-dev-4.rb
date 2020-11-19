@@ -1,6 +1,6 @@
 cask "sublime-text-dev-4" do
-  version "4.092"
-  sha256 "380d163201659bbb1f7c6ca442ef79f4476cedb321687a40d440b8667ab8b5a8"
+  version "4.093"
+  sha256 "c42114ff4a831b2e94917dca5f5ba0cefc99b2d3f632e64871924c8784a4e694"
 
   url "https://download.sublimetext.com/sublime_text_build_#{version.no_dots}_mac.zip"
   appcast "https://www.sublimetext.com/updates/#{version.major}/dev_update_check",
