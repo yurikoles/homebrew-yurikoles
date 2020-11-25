@@ -1,8 +1,9 @@
 class SvtVp9 < Formula
   desc "Scalable Video Technology for VP9 Encoder"
   homepage "https://01.org/svt"
-  url "https://github.com/OpenVisualCloud/SVT-VP9/archive/v0.2.2.tar.gz"
-  sha256 "988adae5ed5744769f1c990f7b085e1e0fa31d41ea415a75b9cf14c0a5b17947"
+  url "https://github.com/OpenVisualCloud/SVT-VP9/archive/v0.3.0.tar.gz"
+  sha256 "6ee01b81c43816170b18709c6045b6245cecc2953f01cecc9e98f82b49ea4f73"
+  license "BSD-2-Clause-Patent"
   head "https://github.com/OpenVisualCloud/SVT-VP9.git"
 
   depends_on "cmake" => :build
@@ -11,8 +12,8 @@ class SvtVp9 < Formula
   def install
     mkdir "build" do
       system "cmake", "..", "-G", "Ninja", *std_cmake_args
-      system "ninja"
-      system "ninja", "install"
+      system "cmake", "--build", "."
+      system "cmake", "--install", "."
     end
   end
 end
