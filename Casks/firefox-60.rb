@@ -63,18 +63,14 @@ cask "firefox-60" do
   end
 
   # download-installer.cdn.mozilla.net/pub/firefox/releases/ was verified as official when first introduced to the cask
-  url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}esr/mac/#{language}/Firefox%20#{version}esr.dmg"
+  url "https://download-installer.cdn.mozilla.net/pub/firefox/releases/#{version}esr/mac/#{language}/Firefox%20#{version}esr.dmg",
+      verified: "download-installer.cdn.mozilla.net/pub/firefox/releases/"
   appcast "https://www.macupdater.net/cgi-bin/check_urls/check_url_redirect.cgi?url=https://download.mozilla.org/%3Fproduct=firefox-esr-latest-ssl%26os=osx"
   name "Mozilla Firefox ESR"
-  desc "Mozilla Firefox Extended Support Release"
+  desc "Web browser"
   homepage "https://www.mozilla.org/firefox/organizations/"
 
-  conflicts_with cask: [
-    "firefox",
-    "firefox-beta",
-  ]
-
-  app "Firefox.app"
+  app "Firefox.app", target: "Firefox 60.app"
 
   zap trash: [
     "~/Library/Application Support/Firefox",
