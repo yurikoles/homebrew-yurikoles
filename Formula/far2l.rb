@@ -17,9 +17,9 @@ class Far2l < Formula
   depends_on "pkg-config"
   depends_on "spdlog"
   depends_on "wget"
+  depends_on "wxmac" #=> :optional
   depends_on "xerces-c"
   depends_on "python@3.9" => :optional
-  depends_on "wxmac" => :optional
 
   resource "virtualenv" do
     url "https://files.pythonhosted.org/packages/06/8c/eb8a0ae49eba5be054ca32b3a1dca432baee1d83c4f125d276c6a5fd2d20/virtualenv-20.1.0.tar.gz"
@@ -27,30 +27,31 @@ class Far2l < Formula
   end
 
   def install
-    mkdir "build" do
-      args = std_cmake_args
-      if build.with? "python@3.9"
-        ENV.prepend_path "PATH", Formula["python@3.9"].opt_libexec/"bin"
+    args = std_cmake_args + %w[
+      -G Ninja
+      -B build
+      -S .
+    ]
 
-        venv_root = libexec/"venv"
-        venv = virtualenv_create(venv_root, "python3")
-        venv.pip_install resource("virtualenv")
-        ENV.prepend_path "PATH", "#{venv_root}/bin"
-        args << "-DPYTHON=yes"
-      else
-        args << "-DPYTHON=no"
-      end
+    if build.with? "python@3.9"
+      ENV.prepend_path "PATH", Formula["python@3.9"].opt_libexec/"bin"
 
-      args << if build.with? "wxmac"
-        "-DUSEWX=yes"
-      else
-        "-DUSEWX=no"
-      end
-
-      system "cmake", "..", "-G", "Ninja", *args
-      system "cmake", "--build", "."
-      system "cmake", "--install", "."
+      venv_root = libexec/"venv"
+      venv = virtualenv_create(venv_root, "python3")
+      venv.pip_install resource("virtualenv")
+      ENV.prepend_path "PATH", "#{venv_root}/bin"
     end
+
+    # see https://github.com/elfmz/far2l/issues/943
+    # if build.with? "wxmac"
+    #   args << "-DUSEWX=ON"
+    # else
+    #   args << "-DUSEWX=OFF"
+    # end
+
+    system "cmake", *args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
   end
 
   test do
