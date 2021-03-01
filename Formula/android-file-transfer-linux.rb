@@ -1,17 +1,27 @@
 class AndroidFileTransferLinux < Formula
   desc "Android File Transfer for Linux"
   homepage "https://whoozle.github.io/android-file-transfer-linux/"
-  url "https://github.com/whoozle/android-file-transfer-linux/archive/v3.6.tar.gz"
-  sha256 "d3a69d66f285a97c324e3e94e165aabd1e2560d55fe287f427160a383352d98a"
-  head
+  url "https://github.com/whoozle/android-file-transfer-linux/archive/v4.2.tar.gz"
+  sha256 "cc607d68e8a18273c9b56975a70a0e68fbdf9d5b903b2727a345a605ff48a19f"
+  head "https://github.com/whoozle/android-file-transfer-linux.git"
+
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
 
   depends_on "cmake" => :build
-  depends_on :osxfuse
+  depends_on "openssl"
   depends_on "qt"
+  depends_on "taglib"
 
   def install
-    system "cmake", ".", *std_cmake_args, "-DBUILD_FUSE=TRUE"
-    system "make", "install"
+    args = std_cmake_args
+    args << "-DBUILD_FUSE=OFF"
+    mkdir "build" do
+      system "cmake", "..", *args
+      system "make", "install"
+    end
   end
 
   test do
