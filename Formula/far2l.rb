@@ -10,6 +10,7 @@ class Far2l < Formula
   depends_on "ninja" => :build
   depends_on "gawk"
   depends_on "libarchive"
+  depends_on "libnfs"
   depends_on "libssh"
   depends_on "neon"
   depends_on "openssl"
@@ -17,13 +18,16 @@ class Far2l < Formula
   depends_on "pkg-config"
   depends_on "spdlog"
   depends_on "wget"
-  depends_on "wxmac" #=> :optional
   depends_on "xerces-c"
+  depends_on "uchardet"
   depends_on "python@3.9" => :optional
+  depends_on "wxmac" => :optional
 
-  resource "virtualenv" do
-    url "https://files.pythonhosted.org/packages/06/8c/eb8a0ae49eba5be054ca32b3a1dca432baee1d83c4f125d276c6a5fd2d20/virtualenv-20.1.0.tar.gz"
-    sha256 "b8d6110f493af256a40d65e29846c69340a947669eec8ce784fcf3dd3af28380"
+  if build.with? "python@3.9"
+    resource "virtualenv" do
+      url "https://files.pythonhosted.org/packages/79/64/203241c2e2b5abfd5edca4e28242c21bf8a9e84490873e4a8a155a9658fc/virtualenv-20.4.2.tar.gz"
+      sha256 "147b43894e51dd6bba882cf9c282447f780e2251cd35172403745fc381a0a80d"
+    end
   end
 
   def install
@@ -42,12 +46,11 @@ class Far2l < Formula
       ENV.prepend_path "PATH", "#{venv_root}/bin"
     end
 
-    # see https://github.com/elfmz/far2l/issues/943
-    # if build.with? "wxmac"
-    #   args << "-DUSEWX=ON"
-    # else
-    #   args << "-DUSEWX=OFF"
-    # end
+    args << if build.with? "wxmac"
+      "-DUSEWX=ON"
+    else
+      "-DUSEWX=OFF"
+    end
 
     system "cmake", *args
     system "cmake", "--build", "build"
