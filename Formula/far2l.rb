@@ -8,6 +8,7 @@ class Far2l < Formula
 
   depends_on "cmake" => :build
   depends_on "ninja" => :build
+
   depends_on "gawk"
   depends_on "libarchive"
   depends_on "libnfs"
@@ -17,11 +18,13 @@ class Far2l < Formula
   depends_on "pcre"
   depends_on "pkg-config"
   depends_on "spdlog"
+  depends_on "uchardet"
   depends_on "wget"
   depends_on "xerces-c"
-  depends_on "uchardet"
+
+  depends_on "wxmac" => :recommended
+
   depends_on "python@3.9" => :optional
-  depends_on "wxmac" => :optional
 
   if build.with? "python@3.9"
     resource "virtualenv" do
