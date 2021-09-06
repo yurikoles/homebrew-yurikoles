@@ -1,19 +1,38 @@
 class SvtVp9 < Formula
   desc "Scalable Video Technology for VP9 Encoder"
   homepage "https://01.org/svt"
-  url "https://github.com/OpenVisualCloud/SVT-VP9/archive/v0.3.0.tar.gz"
-  sha256 "6ee01b81c43816170b18709c6045b6245cecc2953f01cecc9e98f82b49ea4f73"
   license "BSD-2-Clause-Patent"
-  head "https://github.com/OpenVisualCloud/SVT-VP9.git"
+  head "https://github.com/OpenVisualCloud/SVT-VP9.git", branch: "master"
 
   depends_on "cmake" => :build
   depends_on "ninja" => :build
+  depends_on "yasm" => :build
+
+  resource "akiyo_qcif.y4m" do
+    url "https://media.xiph.org/video/derf/y4m/akiyo_qcif.y4m"
+    sha256 "df88d83cbf6d99f3ec41f2c1fd2e67665d2a71ff8caa08f8b6bc46bf4567ea2e"
+  end
 
   def install
-    mkdir "build" do
-      system "cmake", "..", "-G", "Ninja", *std_cmake_args
-      system "cmake", "--build", "."
-      system "cmake", "--install", "."
-    end
+    args = std_cmake_args
+    args << "-G" << "Ninja"
+
+    system "cmake", "-S", ".", "-B", "build", *args
+    system "cmake", "--build", "build"
+    system "cmake", "--install", "build"
+  end
+
+  test do
+    resource("akiyo_qcif.y4m").stage testpath
+    # Create an example mp4 file
+    mp4out = testpath/"video.mp4"
+    (testpath/"command.sh").write <<~EOS
+      #!/bin/sh
+      ulimit -n 512
+      #{bin}/SvtHevcEncApp -i #{testpath}/akiyo_qcif.y4m -b #{mp4out}
+    EOS
+    chmod 0555, testpath/"command.sh"
+    system "./command.sh"
+    assert_predicate mp4out, :exist?
   end
 end
