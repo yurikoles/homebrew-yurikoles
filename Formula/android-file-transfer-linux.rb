@@ -3,7 +3,8 @@ class AndroidFileTransferLinux < Formula
   homepage "https://whoozle.github.io/android-file-transfer-linux/"
   url "https://github.com/whoozle/android-file-transfer-linux/archive/v4.2.tar.gz"
   sha256 "cc607d68e8a18273c9b56975a70a0e68fbdf9d5b903b2727a345a605ff48a19f"
-  head "https://github.com/whoozle/android-file-transfer-linux.git"
+  revision 1
+  head "https://github.com/whoozle/android-file-transfer-linux.git", branch: "master"
 
   livecheck do
     url :stable
@@ -12,8 +13,10 @@ class AndroidFileTransferLinux < Formula
 
   depends_on "cmake" => :build
   depends_on "openssl"
-  depends_on "qt"
+  depends_on "qt@5"
   depends_on "taglib"
+
+  depends_on "pybind11" => :recommended
 
   def install
     args = std_cmake_args
