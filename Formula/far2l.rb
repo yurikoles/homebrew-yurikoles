@@ -3,8 +3,11 @@ class Far2l < Formula
 
   desc "Linux port of FAR Manager v2"
   homepage "https://github.com/elfmz/far2l"
+  url "https://github.com/elfmz/far2l/archive/refs/tags/v2021-06-30_alpha.tar.gz"
+  version "2021-06-30_alpha"
+  sha256 "262714a38d20058f745c6bde3af8ed1c26f28fcc3474d0ef577f8f1a2001e419"
   license "GPL-2.0-only"
-  head "https://github.com/elfmz/far2l.git"
+  head "https://github.com/elfmz/far2l.git", branch: "master"
 
   depends_on "cmake" => :build
   depends_on "ninja" => :build
@@ -22,16 +25,9 @@ class Far2l < Formula
   depends_on "wget"
   depends_on "xerces-c"
 
-  depends_on "wxmac" => :recommended
+  depends_on "wxwidgets" => :recommended
 
   depends_on "python@3.9" => :optional
-
-  if build.with? "python@3.9"
-    resource "virtualenv" do
-      url "https://files.pythonhosted.org/packages/79/64/203241c2e2b5abfd5edca4e28242c21bf8a9e84490873e4a8a155a9658fc/virtualenv-20.4.2.tar.gz"
-      sha256 "147b43894e51dd6bba882cf9c282447f780e2251cd35172403745fc381a0a80d"
-    end
-  end
 
   def install
     args = std_cmake_args + %w[
@@ -44,12 +40,12 @@ class Far2l < Formula
       ENV.prepend_path "PATH", Formula["python@3.9"].opt_libexec/"bin"
 
       venv_root = libexec/"venv"
-      venv = virtualenv_create(venv_root, "python3")
-      venv.pip_install resource("virtualenv")
+      virtualenv_create(venv_root, "python3")
       ENV.prepend_path "PATH", "#{venv_root}/bin"
+      args << "-DPYTHON=yes"
     end
 
-    args << if build.with? "wxmac"
+    args << if build.with? "wxwidgets"
       "-DUSEWX=ON"
     else
       "-DUSEWX=OFF"
@@ -61,6 +57,6 @@ class Far2l < Formula
   end
 
   test do
-    assert_match "help", `#{bin}/far2l -h`
+    assert_match "help", shell_output("#{bin}/far2l -h")
   end
 end
