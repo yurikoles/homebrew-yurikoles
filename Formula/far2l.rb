@@ -3,9 +3,9 @@ class Far2l < Formula
 
   desc "Linux port of FAR Manager v2"
   homepage "https://github.com/elfmz/far2l"
-  url "https://github.com/elfmz/far2l/archive/refs/tags/v2021-06-30_alpha.tar.gz"
-  version "2021-06-30_alpha"
-  sha256 "262714a38d20058f745c6bde3af8ed1c26f28fcc3474d0ef577f8f1a2001e419"
+  url "https://github.com/elfmz/far2l/archive/refs/tags/v_2.4.0.tar.gz"
+  version "2.4.0"
+  sha256 "a595f7f2b48aaf6cfd61c1539bb52207f8f985576ee928915f54b675666e9f88"
   license "GPL-2.0-only"
   head "https://github.com/elfmz/far2l.git", branch: "master"
 
@@ -27,7 +27,7 @@ class Far2l < Formula
 
   depends_on "wxwidgets" => :recommended
 
-  depends_on "python@3.9" => :optional
+  depends_on "python@3.10" => :optional
 
   def install
     args = std_cmake_args + %w[
@@ -36,8 +36,8 @@ class Far2l < Formula
       -S .
     ]
 
-    if build.with? "python@3.9"
-      ENV.prepend_path "PATH", Formula["python@3.9"].opt_libexec/"bin"
+    if build.with? "python@3.10"
+      ENV.prepend_path "PATH", Formula["python@3.10"].opt_libexec/"bin"
 
       venv_root = libexec/"venv"
       virtualenv_create(venv_root, "python3")
