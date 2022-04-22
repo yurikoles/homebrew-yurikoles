@@ -3,13 +3,15 @@ class AndroidFileTransferLinux < Formula
   homepage "https://whoozle.github.io/android-file-transfer-linux/"
   url "https://github.com/whoozle/android-file-transfer-linux/archive/v4.2.tar.gz"
   sha256 "cc607d68e8a18273c9b56975a70a0e68fbdf9d5b903b2727a345a605ff48a19f"
-  revision 2
+  revision 3
   head "https://github.com/whoozle/android-file-transfer-linux.git", branch: "master"
 
   livecheck do
     url :stable
     strategy :github_latest
   end
+
+  option "with-fuse"
 
   depends_on "cmake" => :build
   depends_on "ninja" => :build
@@ -26,6 +28,12 @@ class AndroidFileTransferLinux < Formula
       -G Ninja
       -DBUILD_FUSE=OFF
     ]
+
+    args << if build.with? "fuse"
+      "-D BUILD_FUSE=ON"
+    else
+      "-D BUILD_FUSE=OFF"
+    end
 
     system "cmake", *args
     system "cmake", "--build", "build"
