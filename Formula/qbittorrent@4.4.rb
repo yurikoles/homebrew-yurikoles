@@ -1,10 +1,10 @@
-class Qbittorrent < Formula
+class QbittorrentAT44 < Formula
   desc "BitTorrent client"
   homepage "https://www.qbittorrent.org/"
   url "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.4.3/qbittorrent-4.4.3.tar.xz"
   sha256 "e2744b3df486bea69bfb8f81f56da9d660dd0785cf521fd58952d80a1edc7368"
   license "GPL-2.0-or-later"
-  head "https://github.com/qbittorrent/qBittorrent.git", branch: "master"
+  head "https://github.com/qbittorrent/qBittorrent.git", branch: "v4_4_x"
 
   depends_on "cmake" => :build
   depends_on "ninja" => :build
