@@ -3,7 +3,7 @@ class AndroidFileTransferLinux < Formula
   homepage "https://whoozle.github.io/android-file-transfer-linux/"
   url "https://github.com/whoozle/android-file-transfer-linux/archive/v4.2.tar.gz"
   sha256 "cc607d68e8a18273c9b56975a70a0e68fbdf9d5b903b2727a345a605ff48a19f"
-  revision 3
+  revision 4
   head "https://github.com/whoozle/android-file-transfer-linux.git", branch: "master"
 
   livecheck do
@@ -26,7 +26,6 @@ class AndroidFileTransferLinux < Formula
       -S .
       -B build
       -G Ninja
-      -DBUILD_FUSE=OFF
     ]
 
     args << if build.with? "fuse"
