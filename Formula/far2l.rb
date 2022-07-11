@@ -9,6 +9,12 @@ class Far2l < Formula
   license "GPL-2.0-only"
   head "https://github.com/elfmz/far2l.git", branch: "master"
 
+  livecheck do
+    url "https://github.com/elfmz/far2l/releases"
+    strategy :page_match
+    regex(/far2l[._-](\d+(?:\.\d+)+)[._-](alpha|beta)[._-]MacOS[._-]10\.(11|15)\.dmg/i)
+  end
+
   depends_on "cmake" => :build
   depends_on "ninja" => :build
 
