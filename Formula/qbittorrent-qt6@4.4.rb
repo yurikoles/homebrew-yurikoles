@@ -1,8 +1,8 @@
 class QbittorrentQt6AT44 < Formula
   desc "BitTorrent client"
   homepage "https://www.qbittorrent.org/"
-  url "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.4.3/qbittorrent-4.4.3.tar.xz"
-  sha256 "e2744b3df486bea69bfb8f81f56da9d660dd0785cf521fd58952d80a1edc7368"
+  url "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.4.3.1/qbittorrent-4.4.3.1.tar.xz"
+  sha256 "b64559ca50b54bc6c5be17302e69f34fba8433059842aa4093865dc2c00d24c8"
   license "GPL-2.0-or-later"
   head "https://github.com/qbittorrent/qBittorrent.git", branch: "v4_4_x"
 
