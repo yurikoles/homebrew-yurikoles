@@ -3,9 +3,9 @@ class Far2l < Formula
 
   desc "Linux port of FAR Manager v2"
   homepage "https://github.com/elfmz/far2l"
-  url "https://github.com/elfmz/far2l/archive/refs/tags/v_2.4.0.tar.gz"
-  version "2.4.0"
-  sha256 "a595f7f2b48aaf6cfd61c1539bb52207f8f985576ee928915f54b675666e9f88"
+  url "https://github.com/elfmz/far2l/archive/refs/tags/v_2.4.1.tar.gz"
+  version "2.4.1"
+  sha256 "e52920fd6de077e912b3b80cee3a22a2845a140727fe4e14e5ca73c6e81bbf13"
   license "GPL-2.0-only"
   head "https://github.com/elfmz/far2l.git", branch: "master"
 
