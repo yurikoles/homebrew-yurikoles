@@ -10,27 +10,35 @@ class QbittorrentAT44 < Formula
   depends_on "ninja" => :build
 
   depends_on "libtorrent-rasterbar"
-  depends_on "openssl"
-  depends_on "qt@5"
+  depends_on "openssl@1.1"
+  depends_on "qt" => :recommended
+  depends_on "qt@5" => :optional
 
   def install
-    args = std_cmake_args + %w[
+    args = %w[
       -S .
       -B build
       -G Ninja
-      -D WEBUI=OFF
-      -D QT6=OFF
     ]
 
-    system "cmake", *args
+    qt_dep = ""
+    if build.with? "qt"
+      qt_dep = "qt"
+      args << "-D QT6=ON"
+    elsif build.with? "qt@5"
+      qt_dep = "qt@5"
+      args << "-D QT6=OFF"
+    end
+
+    system "cmake", *std_cmake_args, *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
 
     prefix.install "build/install_manifest.txt"
     # Extract Qt plugin path
-    qtpp = `#{Formula["qt@5"].bin}/qtpaths --plugin-dir`.chomp
+    qtpp = `#{Formula[qt_dep].bin}/qtpaths --plugin-dir`.chomp
     system "/usr/libexec/PlistBuddy",
-      "-c", "Add :LSEnvironment:QT_PLUGIN_PATH string \"#{qtpp}\:#{HOMEBREW_PREFIX}/lib/qt5/plugins\"",
+      "-c", "Add :LSEnvironment:QT_PLUGIN_PATH string \"#{qtpp}\"",
       "#{prefix}/qbittorrent.app/Contents/Info.plist"
   end
 
