@@ -3,16 +3,18 @@ class Far2l < Formula
 
   desc "Linux port of FAR Manager v2"
   homepage "https://github.com/elfmz/far2l"
-  url "https://github.com/elfmz/far2l/archive/refs/tags/v_2.4.1.tar.gz"
-  version "2.4.1"
-  sha256 "e52920fd6de077e912b3b80cee3a22a2845a140727fe4e14e5ca73c6e81bbf13"
+  url "https://github.com/elfmz/far2l/archive/refs/tags/v_2.5.0.tar.gz"
+  version "2.5.0"
+  sha256 "c0cdb302d90b71f3c1c04205a6f0eb1bdb5fe81c36b13d8dd184f18e4b35bddb"
   license "GPL-2.0-only"
   head "https://github.com/elfmz/far2l.git", branch: "master"
 
+  # This check should be updated to avoid unstable versions if/when stable
+  # versions become available in the future.
   livecheck do
     url "https://github.com/elfmz/far2l/releases"
+    regex(%r{href=["']?[^"' >]*?/tree/[^"' >]*?(\d+(?:\.\d+)+)(?:[._-]?(?:alpha|beta))?["' >]}i)
     strategy :page_match
-    regex(/far2l[._-](\d+(?:\.\d+)+)[._-](alpha|beta)[._-]MacOS[._-]10\.(11|15)\.dmg/i)
   end
 
   depends_on "cmake" => :build
