@@ -1,8 +1,8 @@
 class Qbittorrent < Formula
   desc "BitTorrent client"
   homepage "https://www.qbittorrent.org/"
-  url "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.4.5/qbittorrent-4.4.5.tar.xz"
-  sha256 "0d6ed3948d4ad0d63f01510fe902639ae7b383ccfc1c01e88b75fba5b29ff3b3"
+  url "https://downloads.sourceforge.net/project/qbittorrent/qbittorrent/qbittorrent-4.5.1/qbittorrent-4.5.1.tar.xz"
+  sha256 "0527a5887454d6a5f386846f3c73029a6fbeec3d1a4c92e1dc485c485c16add0"
   license "GPL-2.0-or-later"
   head "https://github.com/qbittorrent/qBittorrent.git", branch: "master"
 
