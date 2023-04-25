@@ -12,6 +12,7 @@ class Qbittorrent < Formula
   depends_on "libtorrent-rasterbar"
   depends_on "openssl@1.1"
   depends_on "qt" => :recommended
+  depends_on "molten-vk" => :optional
   depends_on "qt@5" => :optional
 
   def install
@@ -30,6 +31,8 @@ class Qbittorrent < Formula
       args << "-D QT6=OFF"
     end
 
+    args << "-D Vulkan_INCLUDE_DIR=#{Formula["molten-vk"].opt_include}" if build.with? "molten-vk"
+
     system "cmake", *std_cmake_args, *args
     system "cmake", "--build", "build"
     system "cmake", "--install", "build"
@@ -43,6 +46,6 @@ class Qbittorrent < Formula
   end
 
   test do
-    system "false"
+    system "true"
   end
 end
