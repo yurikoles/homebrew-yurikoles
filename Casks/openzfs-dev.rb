@@ -3,15 +3,15 @@ cask "openzfs-dev" do
     on_ventura :or_newer do
       arch arm: "Ventura-13-arm64"
 
-      version "2.1.99,459"
-      sha256 "b2a4917f159f13caeb52aed70598afe8aca7a5ba9ae9b8650c73fa26f39546e6"
+      version "2.1.7rc3,469"
+      sha256 "1293e9bb9fc5238f0d0f51cec454fb4faea18c6411e411ebe6fbc88cece52b97"
     end
   end
   on_intel do
     arch intel: "Catalina-10.15"
 
-    version "2.1.99,458"
-    sha256 "5a5f5b79ed4cc14337c99169effe58ecb0989b888b619a0ef1e69b68e8f8b32e"
+    version "2.1.7rc3,468"
+    sha256 "9fd6e694f4da9e8732b14855549328f66bd6c6272026d8c1315629d669b99534"
   end
 
   url "https://openzfsonosx.org/forum/download/file.php?id=#{version.csv.second}"
