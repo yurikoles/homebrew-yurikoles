@@ -48,6 +48,10 @@ cask "sound-blaster-play3" do
               "com.creative.Uninstaller",
             ]
 
+  zap trash: [
+    "~/Library/Preferences/com.Creative.Sound-Blaster-Play--3-Control-Panel.plist",
+  ]
+
   caveats do
     kext
   end
