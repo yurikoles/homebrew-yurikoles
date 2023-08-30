@@ -3,9 +3,9 @@ class Far2l < Formula
 
   desc "Linux port of FAR Manager v2"
   homepage "https://github.com/elfmz/far2l"
-  url "https://github.com/elfmz/far2l/archive/refs/tags/v_2.5.1.tar.gz"
-  version "2.5.1"
-  sha256 "6a4456c84be0971dd0e929903fc4b16891881f0d8c2f6483c12138c51cd6387d"
+  url "https://github.com/elfmz/far2l/archive/refs/tags/v_2.5.2.tar.gz"
+  version "2.5.2"
+  sha256 "c8ae8bd7b9f242e267f4b13c81735706accdc40046dd262d30a4017b703f36b7"
   license "GPL-2.0-only"
   head "https://github.com/elfmz/far2l.git", branch: "master"
 
@@ -20,7 +20,6 @@ class Far2l < Formula
   depends_on "cmake" => :build
   depends_on "ninja" => :build
 
-  depends_on "gawk"
   depends_on "libarchive"
   depends_on "libnfs"
   depends_on "libssh"
@@ -28,7 +27,6 @@ class Far2l < Formula
   depends_on "openssl"
   depends_on "pcre"
   depends_on "pkg-config"
-  depends_on "spdlog"
   depends_on "uchardet"
   depends_on "wget"
   depends_on "xerces-c"
