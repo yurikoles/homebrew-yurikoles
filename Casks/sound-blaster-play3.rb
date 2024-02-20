@@ -39,18 +39,16 @@ cask "sound-blaster-play3" do
 
   uninstall launchctl: "com.creative.trustudiopc",
             pkgutil:   [
-              "com.creative.Sound Blaster Play! 3.AudioControlPanel.pkg",
-              "com.creative.Creative USB Audio Driver.TruStdPlugin109.pkg",
-              "com.creative.Creative Uninstaller.pkg",
-              "com.creative.Creative Product Registration.pkg",
-              "com.Creative.Sound-Blaster-Play--3-Control-Panel",
               "com.creative.AudioDriver",
+              "com.creative.Creative Product Registration.pkg",
+              "com.creative.Creative Uninstaller.pkg",
+              "com.creative.Creative USB Audio Driver.TruStdPlugin109.pkg",
+              "com.creative.Sound Blaster Play! 3.AudioControlPanel.pkg",
+              "com.Creative.Sound-Blaster-Play--3-Control-Panel",
               "com.creative.Uninstaller",
             ]
 
-  zap trash: [
-    "~/Library/Preferences/com.Creative.Sound-Blaster-Play--3-Control-Panel.plist",
-  ]
+  zap trash: "~/Library/Preferences/com.Creative.Sound-Blaster-Play--3-Control-Panel.plist"
 
   caveats do
     kext
