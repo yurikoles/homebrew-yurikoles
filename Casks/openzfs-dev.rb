@@ -52,14 +52,14 @@ cask "openzfs-dev" do
     system "sudo", "/usr/local/zfs/bin/zpool", "export", "-af"
   end
 
-  uninstall pkgutil:   "org.openzfsonosx.zfs",
-            launchctl: [
+  uninstall launchctl: [
               "org.openzfsonosx.InvariantDisks",
               "org.openzfsonosx.zconfigd",
               "org.openzfsonosx.zed",
               "org.openzfsonosx.zpool-import",
               "org.openzfsonosx.zpool-import-all",
-            ]
+            ],
+            pkgutil:   "org.openzfsonosx.zfs"
 
   # No zap stanza required
 
