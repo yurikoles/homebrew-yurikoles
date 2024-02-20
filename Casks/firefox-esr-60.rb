@@ -1,4 +1,4 @@
-cask "firefox-60" do
+cask "firefox-esr-60" do
   version "60.9.0"
 
   language "cs" do
@@ -69,6 +69,9 @@ cask "firefox-60" do
   name "Mozilla Firefox ESR"
   desc "Web browser"
   homepage "https://www.mozilla.org/firefox/organizations/"
+
+  # https://www.mail-archive.com/enterprise@mozilla.org/msg03402.html
+  deprecate! date: "2019-09-03", because: :discontinued
 
   app "Firefox.app", target: "Firefox 60.app"
 
