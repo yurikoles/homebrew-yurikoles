@@ -22,22 +22,22 @@ cask "virtualbox-snapshot" do
   pkg "VirtualBox.pkg"
 
   uninstall script:  {
-    executable: "VirtualBox_Uninstall.tool",
-    args:       ["--unattended"],
-    sudo:       true,
-  },
+              executable: "VirtualBox_Uninstall.tool",
+              args:       ["--unattended"],
+              sudo:       true,
+            },
             pkgutil: "org.virtualbox.pkg.*"
 
   zap trash: [
-    "/Library/Application Support/VirtualBox",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.virtualbox.app.virtualbox.sfl*",
-    "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.virtualbox.app.virtualboxvm.sfl*",
-    "~/Library/VirtualBox",
-    "~/Library/Preferences/org.virtualbox.app.VirtualBox.plist",
-    "~/Library/Preferences/org.virtualbox.app.VirtualBoxVM.plist",
-    "~/Library/Saved Application State/org.virtualbox.app.VirtualBox.savedState",
-    "~/Library/Saved Application State/org.virtualbox.app.VirtualBoxVM.savedState",
-  ],
+        "/Library/Application Support/VirtualBox",
+        "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.virtualbox.app.virtualbox.sfl*",
+        "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/org.virtualbox.app.virtualboxvm.sfl*",
+        "~/Library/Preferences/org.virtualbox.app.VirtualBox.plist",
+        "~/Library/Preferences/org.virtualbox.app.VirtualBoxVM.plist",
+        "~/Library/Saved Application State/org.virtualbox.app.VirtualBox.savedState",
+        "~/Library/Saved Application State/org.virtualbox.app.VirtualBoxVM.savedState",
+        "~/Library/VirtualBox",
+      ],
       rmdir: "~/VirtualBox VMs"
 
   caveats do
