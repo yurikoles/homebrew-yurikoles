@@ -1,9 +1,8 @@
 class AndroidFileTransferLinux < Formula
   desc "Android File Transfer for Linux"
   homepage "https://whoozle.github.io/android-file-transfer-linux/"
-  url "https://github.com/whoozle/android-file-transfer-linux/archive/v4.2.tar.gz"
-  sha256 "cc607d68e8a18273c9b56975a70a0e68fbdf9d5b903b2727a345a605ff48a19f"
-  revision 4
+  url "https://github.com/whoozle/android-file-transfer-linux/archive/refs/tags/v4.5.tar.gz"
+  sha256 "0f366a8d659926d3859a8628d4f7592692389b060f67da9a936d19b252b42d96"
   head "https://github.com/whoozle/android-file-transfer-linux.git", branch: "master"
 
   livecheck do
