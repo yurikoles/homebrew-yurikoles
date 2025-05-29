@@ -1,9 +1,9 @@
 cask "steamtokendumper" do
   arch arm: "arm64", intel: "x64"
 
-  version "2024.06.27"
-  sha256 arm:   "166f2458b6b6ce22867d258deafe483f81f935de8b28978f8429f98df6f4c467",
-         intel: "d5f8255f64d1db629681cd1d73690edd9dc08a4d5fdc9ddfeae3460bdaeee1d9"
+  version "2025.04.28"
+  sha256 arm:   "51d80c3afa49d87425ddac618335f69d430506f67e8fe2cb68c14c83fa2fb97a",
+         intel: "3425c7a4c4be3b04746c5e859afaf48f45b2abb5bfddda1a305847f76b560fe6"
 
   url "https://github.com/SteamDatabase/SteamTokenDumper/releases/download/#{version}/SteamTokenDumper-osx-#{arch}.tar.gz",
       verified: "github.com/SteamDatabase/SteamTokenDumper/"
