@@ -1,12 +1,11 @@
 cask "steamtokendumper" do
   arch arm: "arm64", intel: "x64"
 
-  version "2025.12.17"
-  sha256 arm:   "abf2710eb44feb750304dfc34d2b0684430a8c8dcc142d74da5eb04f3b645fd8",
-         intel: "52f2bb346594bddaf68fec9a6beeb12527c8b219f114e214f68aca444d3de32c"
+  version "2026.08.20"
+  sha256 arm:   "08475f6b87b3013e33034c4551ca7c3096a73bcd61a39fc041d7c1d4c52efa34",
+         intel: "ba15369f72f98e9828be28db9b179780f867425ecb8023582649136eeaddae01"
 
-  url "https://github.com/SteamDatabase/SteamTokenDumper/releases/download/#{version}/SteamTokenDumper-osx-#{arch}.tar.gz",
-      verified: "github.com/SteamDatabase/SteamTokenDumper/"
+  url "https://github.com/SteamDatabase/SteamTokenDumper/releases/download/#{version}/SteamTokenDumper-osx-#{arch}.tar.gz"
   name "steamtokendumper"
   desc "Submit users' PICS access tokens to SteamDB"
   homepage "https://steamdb.info/tokendumper/"
@@ -16,7 +15,7 @@ cask "steamtokendumper" do
     strategy :github_latest
   end
 
-  depends_on macos: :catalina
+  depends_on macos: :monterey
 
   binary "#{staged_path}/SteamTokenDumper"
 
